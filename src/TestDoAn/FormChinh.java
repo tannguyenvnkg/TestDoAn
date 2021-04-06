@@ -19,6 +19,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormChinh extends javax.swing.JFrame {
     
+    //<editor-fold defaultstate="collapsed" desc=" Khởi Tạo Model ">
+    DefaultTableModel model = null;
+    public DefaultTableModel model(){
+        return model = (DefaultTableModel)tablenhanvien.getModel();
+    }
+//</editor-fold>
+    
     /**
      * Creates new form FormChinh
      */
@@ -41,6 +48,10 @@ public class FormChinh extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablenhanvien = new javax.swing.JTable();
         btnshow = new javax.swing.JButton();
+        txthoten = new javax.swing.JTextField();
+        txtsdt = new javax.swing.JTextField();
+        txtdiachi = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -58,6 +69,11 @@ public class FormChinh extends javax.swing.JFrame {
                 "Họ Tên", "SDT", "Email", "Địa Chỉ"
             }
         ));
+        tablenhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablenhanvienMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablenhanvien);
 
         btnshow.setText("Show");
@@ -74,25 +90,38 @@ public class FormChinh extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(184, 184, 184)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnshow)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnshow))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(btnshow)
+                        .addGap(52, 52, 52)
+                        .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -100,10 +129,19 @@ public class FormChinh extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnshowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnshowActionPerformed
-        DefaultTableModel model = (DefaultTableModel)tablenhanvien.getModel();
+        model();
         ChucNang cn = new ChucNang();
         cn.shownhanvien(model);
     }//GEN-LAST:event_btnshowActionPerformed
+
+    private void tablenhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablenhanvienMouseClicked
+        int a = tablenhanvien.getSelectedRow();
+        model();
+        txthoten.setText(model.getValueAt(a, 0).toString());
+        txtsdt.setText(model.getValueAt(a, 1).toString());
+        txtemail.setText(model.getValueAt(a, 2).toString());
+        txtdiachi.setText(model.getValueAt(a, 3).toString());
+    }//GEN-LAST:event_tablenhanvienMouseClicked
 
     /**
      * @param args the command line arguments
@@ -147,5 +185,9 @@ public class FormChinh extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablenhanvien;
+    private javax.swing.JTextField txtdiachi;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txthoten;
+    private javax.swing.JTextField txtsdt;
     // End of variables declaration//GEN-END:variables
 }
