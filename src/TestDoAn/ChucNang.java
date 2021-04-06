@@ -32,12 +32,13 @@ public class ChucNang extends Database{
             try {
                 ResultSet rs = stmt.executeQuery(query);
                 while(rs.next()){
+                    String manhanvien = rs.getString("IDNhanVien");
                     String tennhanvien = rs.getString("HoTenNhanVien");
                     String sdt = rs.getString("SDT");
                     String email = rs.getString("Email");
                     String diachi = rs.getString("DiaChi");
 
-                    String tbData[] = {tennhanvien,sdt,email,diachi};
+                    String tbData[] = {manhanvien,tennhanvien,sdt,email,diachi};
                     model.addRow(tbData);
 
                 }

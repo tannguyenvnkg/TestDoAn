@@ -52,6 +52,7 @@ public class FormChinh extends javax.swing.JFrame {
         txtsdt = new javax.swing.JTextField();
         txtdiachi = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
+        txtmanhanvien = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -66,7 +67,7 @@ public class FormChinh extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Họ Tên", "SDT", "Email", "Địa Chỉ"
+                "Mã Nhân Viên", "Họ Tên", "SDT", "Email", "Địa Chỉ"
             }
         ));
         tablenhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,7 +99,8 @@ public class FormChinh extends javax.swing.JFrame {
                     .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -109,20 +111,21 @@ public class FormChinh extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnshow))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addGap(78, 78, 78)
+                        .addComponent(txtmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,10 +140,11 @@ public class FormChinh extends javax.swing.JFrame {
     private void tablenhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablenhanvienMouseClicked
         int a = tablenhanvien.getSelectedRow();
         model();
-        txthoten.setText(model.getValueAt(a, 0).toString());
-        txtsdt.setText(model.getValueAt(a, 1).toString());
-        txtemail.setText(model.getValueAt(a, 2).toString());
-        txtdiachi.setText(model.getValueAt(a, 3).toString());
+        txtmanhanvien.setText(model.getValueAt(a, 0).toString());
+        txthoten.setText(model.getValueAt(a, 1).toString());
+        txtsdt.setText(model.getValueAt(a, 2).toString());
+        txtemail.setText(model.getValueAt(a, 3).toString());
+        txtdiachi.setText(model.getValueAt(a, 4).toString());
     }//GEN-LAST:event_tablenhanvienMouseClicked
 
     /**
@@ -188,6 +192,7 @@ public class FormChinh extends javax.swing.JFrame {
     private javax.swing.JTextField txtdiachi;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txthoten;
+    private javax.swing.JTextField txtmanhanvien;
     private javax.swing.JTextField txtsdt;
     // End of variables declaration//GEN-END:variables
 }
