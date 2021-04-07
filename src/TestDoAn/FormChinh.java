@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.naming.spi.DirStateFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import org.omg.CORBA.NVList;
 
 /**
  *
@@ -25,7 +26,10 @@ public class FormChinh extends javax.swing.JFrame {
         return model = (DefaultTableModel)tablenhanvien.getModel();
     }
 //</editor-fold>
-    
+    String[] nhanvien = null;
+    public void laynhanvien(String[] nv){
+        nhanvien = nv;
+    }
     /**
      * Creates new form FormChinh
      */
@@ -132,11 +136,10 @@ public class FormChinh extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnshowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnshowActionPerformed
-        model();
-        ChucNang cn = new ChucNang();
-        cn.shownhanvien(model);
+        String a = NhanVien.getInstance().getTennhanvien();
+        System.out.println(a);
     }//GEN-LAST:event_btnshowActionPerformed
-
+    // show từng nhân viên onclick
     private void tablenhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablenhanvienMouseClicked
         int a = tablenhanvien.getSelectedRow();
         model();

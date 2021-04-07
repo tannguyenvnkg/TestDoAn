@@ -85,11 +85,13 @@ public class Login extends javax.swing.JFrame {
         String pass = password.getText();
         ChucNang cn = new ChucNang();
         try {
-            if(cn.login(user,pass))
+            if(cn.login(user,pass)) // check nhanvien
             {
                 dispose(); // close login form
                 FormChinh frmChinh = new FormChinh();
-                frmChinh.setVisible(true);
+                frmChinh.setVisible(true); // show form
+                frmChinh.model();
+                cn.shownhanvien(frmChinh.model); // show nhân viên vào jtable
             }
             else{
                 JOptionPane.showMessageDialog(null, "Sai Tài Khoản Hoặc Mật Khẩu !!!");

@@ -15,16 +15,19 @@ import javax.swing.table.DefaultTableModel;
  * @author tanng
  */
 public class ChucNang extends Database{
+    
     public  boolean login(String user, String pass) throws SQLException{
-        connect();
+        connect(); // kết nối database
         String query = "select * from NHANVIEN where IDNhanVien= '"+user+"' and MatKhau = '"+pass+"'";
         ResultSet rs = stmt.executeQuery(query);
         if(rs.next()){
+            NhanVien.getInstance().setnhanvien(rs);
             return true;
         }
         else return false;
     }
-    
+    //==========================================================================================================
+    // show nhân viên lên jtable
     public void shownhanvien(DefaultTableModel model){
         connect();
         String query = "Select * from Nhanvien";
@@ -32,14 +35,14 @@ public class ChucNang extends Database{
             try {
                 ResultSet rs = stmt.executeQuery(query);
                 while(rs.next()){
-                    String manhanvien = rs.getString("IDNhanVien");
-                    String tennhanvien = rs.getString("HoTenNhanVien");
-                    String sdt = rs.getString("SDT");
-                    String email = rs.getString("Email");
-                    String diachi = rs.getString("DiaChi");
+                String ma = rs.getString("IDNhanVien");
+                String ten = rs.getString("HoTenNhanVien");
+                String SDT = rs.getString("SDT");
+                String Email = rs.getString("Email");
+                String address = rs.getString("DiaChi");
 
-                    String tbData[] = {manhanvien,tennhanvien,sdt,email,diachi};
-                    model.addRow(tbData);
+                String tbData[] = {ma,ten,SDT,Email,address};
+                model.addRow(tbData);
 
                 }
 
@@ -48,4 +51,5 @@ public class ChucNang extends Database{
             }                   
     
     }
+    //==========================================================================================================
 }
