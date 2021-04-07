@@ -8,6 +8,7 @@ package TestDoAn;
 import  java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -52,4 +53,22 @@ public class ChucNang extends Database{
     
     }
     //==========================================================================================================
+    public boolean checkpass(String passString){
+        if(passString.equals(NhanVien.getInstance().matkhau))
+            return true;
+        return false;
+    }
+    public void ChangePass(String newpass,String confirmpass) throws SQLException{
+        if(newpass.equals(confirmpass)){
+            connect();
+            String query = "update NHANVIEN set MatKhau = '"+newpass+"' where IDNhanVien = '"+NhanVien.getInstance().manhanvien+"'";
+            stmt.execute(query);
+            NhanVien.getInstance().setMatkhau(newpass);
+            JOptionPane.showMessageDialog(null, "Đổi Mật Khẩu Thành Công");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Mật Khẩu Không Khớp!!!");
+        }
+    }
+    
 }

@@ -125,10 +125,10 @@ public class NhanVien {
     }
     
     String manhanvien = "";
-    String tennhanvien = "a";
+    String tennhanvien = "";
     String sdt = "";
     String email = "";
     String diachi = "";
-    String matkhau = "";
+    String matkhau = "a";
     String idchucvu = "";
 }
