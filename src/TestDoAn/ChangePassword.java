@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//<editor-fold defaultstate="collapsed" desc="Ghi Chú">
+//</editor-fold>
 package TestDoAn;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -123,20 +128,24 @@ public class ChangePassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-        String pass = txtOldPass.getText();
-        ChucNang cn = new ChucNang();
-        if(cn.checkpass(pass)) {
+        
+        try {
+            String pass = txtOldPass.getText();
+            ChucNang cn = new ChucNang();
+            if(cn.checkpass(pass)) {
             System.out.println("ok");
             String newpass = txtNewPass.getText();
             String confirmpass = txtConfirmNewPass.getText();
             cn.ChangePass(newpass, confirmpass);// đổi pass
             clear();
+            } 
+            else {
+                JOptionPane.showMessageDialog(null, "Sai Mật Khẩu Cũ");
+                clear();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ChangePassword.class.getName()).log(Level.SEVERE, null, ex);
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Sai Mật Khẩu Cũ");
-            clear();
-        }
-            
     }//GEN-LAST:event_btnOKActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

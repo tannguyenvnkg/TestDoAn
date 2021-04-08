@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//<editor-fold defaultstate="collapsed" desc="Ghi Chú">
+//</editor-fold>
 package TestDoAn;
 
 import  java.sql.*;
@@ -17,17 +19,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ChucNang extends Database{
     
+    //<editor-fold defaultstate="collapsed" desc="Login">
     public  boolean login(String user, String pass) throws SQLException{
         connect(); // kết nối database
         String query = "select * from NHANVIEN where IDNhanVien= '"+user+"' and MatKhau = '"+pass+"'";
         ResultSet rs = stmt.executeQuery(query);
         if(rs.next()){
-            NhanVien.getInstance().setnhanvien(rs);
+            NhanVien.getInstance().LuuNhanVien(rs);
             return true;
         }
         else return false;
     }
+//</editor-fold>
     //==========================================================================================================
+    //<editor-fold defaultstate="collapsed" desc=" show nhân viên lên jtable">
     // show nhân viên lên jtable
     public void shownhanvien(DefaultTableModel model){
         connect();
@@ -52,23 +57,29 @@ public class ChucNang extends Database{
             }                   
     
     }
+//</editor-fold>
     //==========================================================================================================
+    //<editor-fold defaultstate="collapsed" desc="Đổi Pass">
+    // đổi pass
     public boolean checkpass(String passString){
-        if(passString.equals(NhanVien.getInstance().matkhau))
-            return true;
-        return false;
+        return passString.equals(NhanVien.getInstance().matkhau);
     }
     public void ChangePass(String newpass,String confirmpass) throws SQLException{
         if(newpass.equals(confirmpass)){
-            connect();
-            String query = "update NHANVIEN set MatKhau = '"+newpass+"' where IDNhanVien = '"+NhanVien.getInstance().manhanvien+"'";
-            stmt.execute(query);
-            NhanVien.getInstance().setMatkhau(newpass);
-            JOptionPane.showMessageDialog(null, "Đổi Mật Khẩu Thành Công");
+            if (newpass.equals("") || confirmpass.equals("") ) {
+                JOptionPane.showMessageDialog(null, "Mật Khẩu Không Được Để Trống !!!");
+            } else {
+                connect();
+                String query = "update NHANVIEN set MatKhau = '"+newpass+"' where IDNhanVien = '"+NhanVien.getInstance().manhanvien+"'";
+                stmt.execute(query);
+                NhanVien.getInstance().setMatkhau(newpass);
+                JOptionPane.showMessageDialog(null, "Đổi Mật Khẩu Thành Công");
+            }
         }
         else {
             JOptionPane.showMessageDialog(null, "Mật Khẩu Không Khớp!!!");
         }
     }
-    
+//</editor-fold>
+    //==========================================================================================================
 }

@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//<editor-fold defaultstate="collapsed" desc="Ghi Chú">
+//</editor-fold>
 package TestDoAn;
 
 import java.sql.ResultSet;
@@ -83,16 +86,6 @@ public class NhanVien {
     
 //    </editor-fold>
     //<editor-fold defaultstate="collapsed" desc=" Constructor ">
-//    public NhanVien(String manhanvien, String tennhanvien, String sdt, String email, String diachi, String matkhau, String idchucvu) {
-//        this.manhanvien = manhanvien;
-//        this.tennhanvien = tennhanvien;
-//        this.sdt = sdt;
-//        this.email = email;
-//        this.diachi = diachi;
-//        this.matkhau = matkhau;
-//        this.idchucvu = idchucvu;
-//    }
-    
     public void SetNhanVien(String manhanvien, String tennhanvien, String sdt, String email, String diachi, String matkhau, String idchucvu){
         this.manhanvien = manhanvien;
         this.tennhanvien = tennhanvien;
@@ -113,7 +106,7 @@ public class NhanVien {
     }
     //</editor-fold>
     // lưu nhân viên đăng nhập từ excute SQL
-    public void setnhanvien(ResultSet rs) throws SQLException{
+    public void LuuNhanVien(ResultSet rs) throws SQLException{
         String ma = rs.getString("IDNhanVien");
         String ten = rs.getString("HoTenNhanVien");
         String Sdt = rs.getString("SDT");
