@@ -7,6 +7,9 @@
 //</editor-fold>
 package TestDoAn;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,9 +44,9 @@ public class NhanSu extends javax.swing.JFrame {
         btngetback = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablenhanvien = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnAddNew = new javax.swing.JButton();
         txtmanhanvien = new javax.swing.JTextField();
         txttennhanvien = new javax.swing.JTextField();
         txtsdt = new javax.swing.JTextField();
@@ -51,7 +54,7 @@ public class NhanSu extends javax.swing.JFrame {
         txtdiachi = new javax.swing.JTextField();
         txtmatkhau = new javax.swing.JTextField();
         txtchucvu = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        btnActive = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,13 +80,23 @@ public class NhanSu extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablenhanvien);
 
-        jButton1.setText("Xóa");
+        btnDelete.setText("Xóa");
 
-        jButton2.setText("Lưu");
+        btnSave.setText("Lưu");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Thêm Mới");
+        btnAddNew.setText("Thêm Mới");
+        btnAddNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddNewActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Active Nhân Viên");
+        btnActive.setText("Active Nhân Viên");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,17 +119,17 @@ public class NhanSu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
-                                .addComponent(jButton4)
+                                .addComponent(btnActive)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btngetback)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(btnAddNew)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnSave)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnDelete)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -126,9 +139,9 @@ public class NhanSu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btngetback)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +161,7 @@ public class NhanSu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnActive, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -172,6 +185,42 @@ public class NhanSu extends javax.swing.JFrame {
         txtchucvu.setText(model.getValueAt(a, 6).toString());
     }//GEN-LAST:event_tablenhanvienMouseClicked
 
+    private void btnAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewActionPerformed
+        clear();
+    }//GEN-LAST:event_btnAddNewActionPerformed
+    
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        
+         try {
+            ChucNang cn = new ChucNang();
+            String ma = txtmanhanvien.getText();
+            String ten = txttennhanvien.getText();
+            String sdt = txtsdt.getText();
+            String email = txtemail.getText();
+            String diachi = txtdiachi.getText();
+            String matkhau = txtmatkhau.getText();
+            String chucvu = txtchucvu.getText();
+            if(!cn.checkma(ma)) cn.AddNhanVien(ma,ten,sdt,email,diachi,matkhau);
+            else
+                cn.UpdateNhanVien(ma,ten,sdt,email,diachi,matkhau);
+            clear();
+            cn.shownhanvien(model);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanSu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnSaveActionPerformed
+    public void clear(){
+        txtmanhanvien.enable();
+        txtmanhanvien.setText("");
+        txttennhanvien.setText(""); 
+        txtsdt.setText(""); 
+        txtemail.setText(""); 
+        txtdiachi.setText(""); 
+        txtmatkhau.setText("");
+        txtchucvu.setText("");
+        txtchucvu.disable();
+    }
     /**
      * @param args the command line arguments
      */
@@ -208,11 +257,11 @@ public class NhanSu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActive;
+    private javax.swing.JButton btnAddNew;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton btngetback;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablenhanvien;
     private javax.swing.JTextField txtchucvu;

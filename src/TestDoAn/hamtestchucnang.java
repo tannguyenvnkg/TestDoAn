@@ -5,13 +5,21 @@
  */
 package TestDoAn;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author tanng
  */
-public class hamtestchucnang {
-        public static void main(String[] args) {
-            System.out.println(NhanVien.getInstance().getMatkhau());
-            
-    }
+public class hamtestchucnang extends  Database{
+        public void run() throws SQLException{
+            connect();
+            String queryString = "Select * from Chucvu";
+            ResultSet rs = stmt.executeQuery(queryString);
+            while(rs.next()){
+                System.out.println(rs.getString("TenChucVu"));
+            }    
+        }
+        
 }

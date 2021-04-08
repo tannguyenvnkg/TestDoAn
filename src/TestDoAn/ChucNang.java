@@ -36,8 +36,7 @@ public class ChucNang extends Database{
 //</editor-fold>
     //==========================================================================================================
     //<editor-fold defaultstate="collapsed" desc=" show nhân viên lên jtable">
-    // show nhân viên lên jtable
-    public void shownhanvien(DefaultTableModel model){
+     public void shownhanvien(DefaultTableModel model){
         connect();
         String query = "Select * from Nhanvien";
         model.setRowCount(0); // clear jtable
@@ -52,11 +51,12 @@ public class ChucNang extends Database{
                 String matkhau = rs.getString("MatKhau");
                 String chucvu = "";
                 String trangthai = "";
+                
                 if(rs.getString("IDChucvu").equals("1")) chucvu = "Admin";
                 else if(rs.getString("IDChucvu").equals("2")) chucvu = "Nhân Viên";
-                
                 if(rs.getBoolean("TrangThai")) trangthai = "Active";
                 else trangthai = "Deactive";
+                
                 String tbData[] = {ma,ten,SDT,Email,address,matkhau,chucvu,trangthai}; 
                 model.addRow(tbData);
                 }
@@ -66,6 +66,8 @@ public class ChucNang extends Database{
             }                   
     
     }
+    // show nhân viên lên jtable
+   
 //</editor-fold>
     //==========================================================================================================
     //<editor-fold defaultstate="collapsed" desc="Đổi Pass">
@@ -91,4 +93,31 @@ public class ChucNang extends Database{
     }
 //</editor-fold>
     //==========================================================================================================
+    //Edit Nhân Viên
+    public boolean checkma(String ma) throws SQLException{
+        connect();
+        String query = "Select* from NhanVien";
+        ResultSet rs = stmt.executeQuery(query);
+        while(rs.next()){
+            if(rs.getString("IDNhanVien").equals(ma)) return true; // tồn tại mã nhân viên thì update
+        }
+        return false; // không tồn tại thì add
+    }
+    
+    public void UpdateNhanVien(String ma,String ten, String sdt,String email,String diachi,String matkhau) throws SQLException{
+        connect();
+        String query = 
+            "Update nhanvien set "
+                + "HoTenNhanVien = '"+ten+"' , SDT='"+sdt+"',Email='"+email+"',"
+                + "DiaChi='"+diachi+"',MatKhau='"+matkhau+"' where IDNhanVien='"+ma+"'";
+        stmt.execute(query);
+        JOptionPane.showMessageDialog(null, "Update Nhân Viên Thành Công");
+    }
+    
+    public void AddNhanVien(String ma,String ten, String sdt,String email,String diachi,String matkhau) throws SQLException{
+        connect();
+        String query = "insert into NHANVIEN values('"+ma+"',N'"+ten+"','"+sdt+"','"+email+"',N'"+diachi+"','"+matkhau+"',1,1)";
+        stmt.execute(query);
+        JOptionPane.showMessageDialog(null, "Add Nhân Viên Thành Công");
+    }
 }
