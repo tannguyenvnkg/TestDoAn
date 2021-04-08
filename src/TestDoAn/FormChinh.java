@@ -178,7 +178,7 @@ public class FormChinh extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnshowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnshowActionPerformed
-        String a = NhanVien.getInstance().getTennhanvien();
+        boolean a = NhanVien.getInstance().getTrangthai();
         System.out.println(a);
     }//GEN-LAST:event_btnshowActionPerformed
     // show từng nhân viên onclick
@@ -200,6 +200,9 @@ public class FormChinh extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         dispose();
+        NhanVien.getInstance().SetEmptyNhanVien();
+        Login lg = new Login();
+        lg.show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**

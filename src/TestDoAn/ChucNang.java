@@ -30,6 +30,9 @@ public class ChucNang extends Database{
         }
         else return false;
     }
+    public boolean checktrangthai() {
+        return NhanVien.getInstance().getTrangthai();
+    }
 //</editor-fold>
     //==========================================================================================================
     //<editor-fold defaultstate="collapsed" desc=" show nhân viên lên jtable">
@@ -49,7 +52,6 @@ public class ChucNang extends Database{
 
                 String tbData[] = {ma,ten,SDT,Email,address};
                 model.addRow(tbData);
-
                 }
 
             } catch (SQLException ex) {

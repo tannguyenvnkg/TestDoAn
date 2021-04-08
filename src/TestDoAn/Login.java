@@ -87,11 +87,14 @@ public class Login extends javax.swing.JFrame {
         try {
             if(cn.login(user,pass)) // check nhanvien
             {
-                dispose(); // close login form
-                FormChinh frmChinh = new FormChinh();
-                frmChinh.setVisible(true); // show form
-                frmChinh.model();
-                cn.shownhanvien(frmChinh.model); // show nhân viên vào jtable
+                if(cn.checktrangthai()){ // check trạng thái nhân viên
+                    dispose(); // close login form
+                    FormChinh frmChinh = new FormChinh();
+                    frmChinh.setVisible(true); // show form
+                    frmChinh.model();
+                    cn.shownhanvien(frmChinh.model); // show nhân viên vào jtable
+                }
+                else JOptionPane.showMessageDialog(null, "Tài Khoản Đang Bị Khóa");
             }
             else{
                 JOptionPane.showMessageDialog(null, "Sai Tài Khoản Hoặc Mật Khẩu !!!");

@@ -28,6 +28,13 @@ public class NhanVien {
     }
     
     //<editor-fold defaultstate="collapsed" desc=" Get Set ">
+    public boolean getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(boolean trangthai) {
+        this.trangthai = trangthai;
+    }
     public String getManhanvien() {
         return manhanvien;
     }
@@ -86,7 +93,7 @@ public class NhanVien {
     
 //    </editor-fold>
     //<editor-fold defaultstate="collapsed" desc=" Constructor ">
-    public void SetNhanVien(String manhanvien, String tennhanvien, String sdt, String email, String diachi, String matkhau, String idchucvu){
+    public void SetNhanVien(String manhanvien, String tennhanvien, String sdt, String email, String diachi, String matkhau, String idchucvu,boolean Trangthai){
         this.manhanvien = manhanvien;
         this.tennhanvien = tennhanvien;
         this.sdt = sdt;
@@ -94,6 +101,7 @@ public class NhanVien {
         this.diachi = diachi;
         this.matkhau = matkhau;
         this.idchucvu = idchucvu;
+        this.trangthai = Trangthai;
     }
     public void  SetEmptyNhanVien(){
         manhanvien ="";
@@ -103,6 +111,7 @@ public class NhanVien {
         diachi ="";
         matkhau ="";
         idchucvu ="";
+        trangthai = false;
     }
     //</editor-fold>
     // lưu nhân viên đăng nhập từ excute SQL
@@ -113,8 +122,9 @@ public class NhanVien {
         String Email = rs.getString("Email");
         String Diachi = rs.getString("DiaChi");
         String Matkhau = rs.getString("MatKhau");
-        String Idchucvu = rs.getString("IDChucvu"); 
-        SetNhanVien(ma, ten, Sdt, Email, Diachi, Matkhau, Idchucvu);
+        String Idchucvu = rs.getString("IDChucvu");
+        boolean TrangThai = rs.getBoolean("TrangThai");
+        SetNhanVien(ma, ten, Sdt, Email, Diachi, Matkhau, Idchucvu,TrangThai);
     }
     
     String manhanvien = "";
@@ -124,4 +134,7 @@ public class NhanVien {
     String diachi = "";
     String matkhau = "a";
     String idchucvu = "";
+    boolean trangthai = false;
+
+    
 }

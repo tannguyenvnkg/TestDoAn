@@ -32,7 +32,7 @@ public class Database {
             
             conn = DriverManager.getConnection(dbURL); // nối database
             stmt = conn.createStatement(); // tạo stmt
-            if(conn != null) System.out.println("Connect Database Successful");
+           // if(conn != null) System.out.println("Connect Database Successful");
        } catch (SQLException e) {
             System.err.println(e);
         }

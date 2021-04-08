@@ -29,11 +29,10 @@ public class FormProfile extends javax.swing.JFrame {
 
         txtmanhanvien = new javax.swing.JTextField();
         txtten = new javax.swing.JTextField();
-        txtsdt = new javax.swing.JTextField();
+        txtidchucvu = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
         txtdiachi = new javax.swing.JTextField();
-        txtidchucvu = new javax.swing.JTextField();
-        txtmatkhau = new javax.swing.JTextField();
+        txtsdt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         btnchangepassword = new javax.swing.JButton();
@@ -44,15 +43,13 @@ public class FormProfile extends javax.swing.JFrame {
 
         txtten.setEnabled(false);
 
-        txtsdt.setEnabled(false);
+        txtidchucvu.setEnabled(false);
 
         txtemail.setEnabled(false);
 
         txtdiachi.setEnabled(false);
 
-        txtidchucvu.setEnabled(false);
-
-        txtmatkhau.setEnabled(false);
+        txtsdt.setEnabled(false);
 
         jLabel1.setText("My Profile");
 
@@ -79,13 +76,12 @@ public class FormProfile extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtidchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtidchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnchangepassword)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(201, 201, 201)
@@ -101,27 +97,25 @@ public class FormProfile extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtidchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtidchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnchangepassword, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(458, Short.MAX_VALUE)
+                    .addContainerGap(407, Short.MAX_VALUE)
                     .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
@@ -190,8 +184,9 @@ public class FormProfile extends javax.swing.JFrame {
         txtsdt.setText(sdt);
         txtemail.setText(email);
         txtdiachi.setText(diachi);
-        txtmatkhau.setText(matkhau);
-        txtidchucvu.setText(idchucvu);
+        if(idchucvu.equals("1"))
+            txtidchucvu.setText("Admin");
+        else if(idchucvu.equals("2")) txtidchucvu.setText("Nhân Viên");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
@@ -201,7 +196,6 @@ public class FormProfile extends javax.swing.JFrame {
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtidchucvu;
     private javax.swing.JTextField txtmanhanvien;
-    private javax.swing.JTextField txtmatkhau;
     private javax.swing.JTextField txtsdt;
     private javax.swing.JTextField txtten;
     // End of variables declaration//GEN-END:variables
