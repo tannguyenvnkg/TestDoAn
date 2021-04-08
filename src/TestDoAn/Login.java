@@ -91,8 +91,8 @@ public class Login extends javax.swing.JFrame {
                     dispose(); // close login form
                     FormChinh frmChinh = new FormChinh();
                     frmChinh.setVisible(true); // show form
-                    frmChinh.model();
-                    cn.shownhanvien(frmChinh.model); // show nhân viên vào jtable
+//                    frmChinh.model(); // lấy jtable
+//                    cn.shownhanvien(frmChinh.model); // show nhân viên vào jtable
                 }
                 else JOptionPane.showMessageDialog(null, "Tài Khoản Đang Bị Khóa");
             }

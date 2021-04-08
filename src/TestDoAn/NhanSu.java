@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//<editor-fold defaultstate="collapsed" desc="Ghi Chú">
+//</editor-fold>
 package TestDoAn;
+
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,11 +15,18 @@ package TestDoAn;
  */
 public class NhanSu extends javax.swing.JFrame {
 
+    //<editor-fold defaultstate="collapsed" desc=" Khởi Tạo Model ">
+    DefaultTableModel model = null;
+    public DefaultTableModel model(){
+        return model = (DefaultTableModel)tablenhanvien.getModel();
+    }
+//</editor-fold>
     /**
      * Creates new form NhanSu
      */
     public NhanSu() {
         initComponents();
+        tablenhanvien.setDefaultEditor(Object.class , null);
     }
 
     /**
@@ -27,21 +38,139 @@ public class NhanSu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btngetback = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablenhanvien = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        txtmanhanvien = new javax.swing.JTextField();
+        txttennhanvien = new javax.swing.JTextField();
+        txtsdt = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        txtdiachi = new javax.swing.JTextField();
+        txtmatkhau = new javax.swing.JTextField();
+        txtchucvu = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btngetback.setText("Trở Lại");
+        btngetback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btngetbackActionPerformed(evt);
+            }
+        });
+
+        tablenhanvien.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã Nhân Viên", "Họ Tên", "SDT", "Email", "Địa Chỉ", "Mật Khẩu", "Chức Vụ", "Trạng Thái"
+            }
+        ));
+        tablenhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablenhanvienMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablenhanvien);
+
+        jButton1.setText("Xóa");
+
+        jButton2.setText("Lưu");
+
+        jButton3.setText("Thêm Mới");
+
+        jButton4.setText("Active Nhân Viên");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtmanhanvien)
+                                    .addComponent(txttennhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                                    .addComponent(txtsdt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                                    .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                                    .addComponent(txtdiachi, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                                    .addComponent(txtmatkhau, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                                    .addComponent(txtchucvu, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btngetback)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btngetback)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addComponent(txtmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txttennhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btngetbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngetbackActionPerformed
+        dispose();
+    }//GEN-LAST:event_btngetbackActionPerformed
+
+    private void tablenhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablenhanvienMouseClicked
+        txtmanhanvien.enable(false);
+        int a = tablenhanvien.getSelectedRow();
+        model();
+        txtmanhanvien.setText(model.getValueAt(a, 0).toString());
+        txttennhanvien.setText(model.getValueAt(a, 1).toString());
+        txtsdt.setText(model.getValueAt(a, 2).toString());
+        txtemail.setText(model.getValueAt(a, 3).toString());
+        txtdiachi.setText(model.getValueAt(a, 4).toString());
+        txtmatkhau.setText(model.getValueAt(a, 5).toString());
+        txtchucvu.setText(model.getValueAt(a, 6).toString());
+    }//GEN-LAST:event_tablenhanvienMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +208,19 @@ public class NhanSu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btngetback;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablenhanvien;
+    private javax.swing.JTextField txtchucvu;
+    private javax.swing.JTextField txtdiachi;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtmanhanvien;
+    private javax.swing.JTextField txtmatkhau;
+    private javax.swing.JTextField txtsdt;
+    private javax.swing.JTextField txttennhanvien;
     // End of variables declaration//GEN-END:variables
 }

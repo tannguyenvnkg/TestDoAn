@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.spi.DirStateFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.omg.CORBA.NVList;
@@ -22,19 +23,13 @@ import org.omg.CORBA.NVList;
  */
 public class FormChinh extends javax.swing.JFrame {
     
-    //<editor-fold defaultstate="collapsed" desc=" Khởi Tạo Model ">
-    DefaultTableModel model = null;
-    public DefaultTableModel model(){
-        return model = (DefaultTableModel)tablenhanvien.getModel();
-    }
-//</editor-fold>
-    String[] nhanvien = null;
+    
     /**
      * Creates new form FormChinh
      */
     public FormChinh() {
         initComponents();
-        tablenhanvien.setDefaultEditor(Object.class , null);
+        
     }
 
     /**
@@ -54,14 +49,7 @@ public class FormChinh extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablenhanvien = new javax.swing.JTable();
         btnshow = new javax.swing.JButton();
-        txthoten = new javax.swing.JTextField();
-        txtsdt = new javax.swing.JTextField();
-        txtdiachi = new javax.swing.JTextField();
-        txtemail = new javax.swing.JTextField();
-        txtmanhanvien = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -85,21 +73,6 @@ public class FormChinh extends javax.swing.JFrame {
         jMenu4.setText("jMenu4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        tablenhanvien.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã Nhân Viên", "Họ Tên", "SDT", "Email", "Địa Chỉ"
-            }
-        ));
-        tablenhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablenhanvienMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tablenhanvien);
 
         btnshow.setText("Show");
         btnshow.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +104,11 @@ public class FormChinh extends javax.swing.JFrame {
         jMenu5.setText("Nhân Sự");
 
         jMenuItem4.setText("Quản Lý");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem4);
 
         jMenuBar1.add(jMenu5);
@@ -141,37 +119,17 @@ public class FormChinh extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnshow, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnshow)
+                .addContainerGap(750, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(txtmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txthoten, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnshow))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(btnshow)
+                .addContainerGap(367, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,16 +139,6 @@ public class FormChinh extends javax.swing.JFrame {
         boolean a = NhanVien.getInstance().getTrangthai();
         System.out.println(a);
     }//GEN-LAST:event_btnshowActionPerformed
-    // show từng nhân viên onclick
-    private void tablenhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablenhanvienMouseClicked
-        int a = tablenhanvien.getSelectedRow();
-        model();
-        txtmanhanvien.setText(model.getValueAt(a, 0).toString());
-        txthoten.setText(model.getValueAt(a, 1).toString());
-        txtsdt.setText(model.getValueAt(a, 2).toString());
-        txtemail.setText(model.getValueAt(a, 3).toString());
-        txtdiachi.setText(model.getValueAt(a, 4).toString());
-    }//GEN-LAST:event_tablenhanvienMouseClicked
 
     private void thongtincanhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thongtincanhanActionPerformed
         FormProfile frmProfile = new FormProfile();
@@ -204,6 +152,19 @@ public class FormChinh extends javax.swing.JFrame {
         Login lg = new Login();
         lg.show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        ChucNang cn = new ChucNang();
+        if(!NhanVien.getInstance().getIdchucvu().equals("1")){
+            JOptionPane.showMessageDialog(null, "Bạn không có quyền truy cập");
+        }
+        else {
+            NhanSu ns = new NhanSu();
+            ns.setVisible(true); // show form
+            ns.model(); //lấy jtable
+            cn.shownhanvien(ns.model);  // show nhân viên vào jtable
+        }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,14 +217,7 @@ public class FormChinh extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tablenhanvien;
     private javax.swing.JMenuItem thongtincanhan;
-    private javax.swing.JTextField txtdiachi;
-    private javax.swing.JTextField txtemail;
-    private javax.swing.JTextField txthoten;
-    private javax.swing.JTextField txtmanhanvien;
-    private javax.swing.JTextField txtsdt;
     // End of variables declaration//GEN-END:variables
 }

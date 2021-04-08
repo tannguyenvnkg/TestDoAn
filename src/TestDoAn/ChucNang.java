@@ -49,8 +49,15 @@ public class ChucNang extends Database{
                 String SDT = rs.getString("SDT");
                 String Email = rs.getString("Email");
                 String address = rs.getString("DiaChi");
-
-                String tbData[] = {ma,ten,SDT,Email,address};
+                String matkhau = rs.getString("MatKhau");
+                String chucvu = "";
+                String trangthai = "";
+                if(rs.getString("IDChucvu").equals("1")) chucvu = "Admin";
+                else if(rs.getString("IDChucvu").equals("2")) chucvu = "Nhân Viên";
+                
+                if(rs.getBoolean("TrangThai")) trangthai = "Active";
+                else trangthai = "Deactive";
+                String tbData[] = {ma,ten,SDT,Email,address,matkhau,chucvu,trangthai}; 
                 model.addRow(tbData);
                 }
 
