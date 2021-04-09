@@ -54,9 +54,9 @@ public class FormChinh extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         thongtincanhan = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        DangXuat = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        QuanLy = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
@@ -91,25 +91,25 @@ public class FormChinh extends javax.swing.JFrame {
         });
         jMenu1.add(thongtincanhan);
 
-        jMenuItem2.setText("Đăng Xuất");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        DangXuat.setText("Đăng Xuất");
+        DangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                DangXuatActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(DangXuat);
 
         jMenuBar1.add(jMenu1);
 
         jMenu5.setText("Nhân Sự");
 
-        jMenuItem4.setText("Quản Lý");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        QuanLy.setText("Quản Lý");
+        QuanLy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                QuanLyActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem4);
+        jMenu5.add(QuanLy);
 
         jMenuBar1.add(jMenu5);
 
@@ -146,14 +146,14 @@ public class FormChinh extends javax.swing.JFrame {
         frmProfile.show();
     }//GEN-LAST:event_thongtincanhanActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void DangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DangXuatActionPerformed
         dispose();
         NhanVien.getInstance().SetEmptyNhanVien();
         Login lg = new Login();
         lg.show();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_DangXuatActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void QuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuanLyActionPerformed
         ChucNang cn = new ChucNang();
         if(!NhanVien.getInstance().getIdchucvu().equals("1")){
             JOptionPane.showMessageDialog(null, "Bạn không có quyền truy cập");
@@ -164,7 +164,7 @@ public class FormChinh extends javax.swing.JFrame {
             ns.model(); //lấy jtable
             cn.shownhanvien(ns.model);  // show nhân viên vào jtable
         }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_QuanLyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +203,8 @@ public class FormChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem DangXuat;
+    private javax.swing.JMenuItem QuanLy;
     private javax.swing.JButton btnshow;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
@@ -213,9 +215,7 @@ public class FormChinh extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenuItem thongtincanhan;

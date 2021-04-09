@@ -93,7 +93,8 @@ public class ChucNang extends Database{
     }
 //</editor-fold>
     //==========================================================================================================
-    //Edit Nhân Viên
+    //<editor-fold defaultstate="collapsed" desc="Thêm Xóa Sửa Nhân Viên">
+    //Thêm Xóa Sửa Nhân Viên
     public boolean checkma(String ma) throws SQLException{
         connect();
         String query = "Select* from NhanVien";
@@ -108,8 +109,8 @@ public class ChucNang extends Database{
         connect();
         String query = 
             "Update nhanvien set "
-                + "HoTenNhanVien = '"+ten+"' , SDT='"+sdt+"',Email='"+email+"',"
-                + "DiaChi='"+diachi+"',MatKhau='"+matkhau+"' where IDNhanVien='"+ma+"'";
+                + "HoTenNhanVien = N'"+ten+"' , SDT='"+sdt+"',Email='"+email+"',"
+                + "DiaChi=N'"+diachi+"',MatKhau='"+matkhau+"' where IDNhanVien='"+ma+"'";
         stmt.execute(query);
         JOptionPane.showMessageDialog(null, "Update Nhân Viên Thành Công");
     }
@@ -120,4 +121,18 @@ public class ChucNang extends Database{
         stmt.execute(query);
         JOptionPane.showMessageDialog(null, "Add Nhân Viên Thành Công");
     }
+    public void DeleteNhanVien(String ma) throws SQLException{
+        connect();
+        String query = "update nhanvien set trangthai = 0 where IDNhanVien = '"+ma+"'";
+        stmt.execute(query);
+        JOptionPane.showMessageDialog(null, "Delete Nhân Viên Thành Công");
+    }
+    public void ActiveNhanVien(String ma) throws SQLException{
+        connect();
+        String query = "update nhanvien set trangthai = 1 where IDNhanVien = '"+ma+"'";
+        stmt.execute(query);
+        JOptionPane.showMessageDialog(null, "Active Nhân Viên Thành Công");
+    }
+    //</editor-fold>
+    
 }
