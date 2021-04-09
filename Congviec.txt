@@ -1,1 +1,0 @@
-button lưu => thêm nhân viên, update nhân viên

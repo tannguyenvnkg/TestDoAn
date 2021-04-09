@@ -53,13 +53,20 @@
                                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtchucvu" max="32767" attributes="0"/>
-                                          <Component id="txtdiachi" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="txtemail" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="txtmanhanvien" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="txttennhanvien" alignment="1" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtdiachi" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtemail" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtmanhanvien" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txttennhanvien" alignment="1" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                              <Component id="cboChucVu" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -129,8 +136,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtchucvu" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="cboChucVu" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnActive" min="-2" pref="37" max="-2" attributes="0"/>
@@ -265,8 +272,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtmatkhau">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtchucvu">
-    </Component>
     <Component class="javax.swing.JButton" name="btnActive">
       <Properties>
         <Property name="text" type="java.lang.String" value="Active Nh&#xe2;n Vi&#xea;n"/>
@@ -309,6 +314,19 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboChucVu">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboChucVuActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

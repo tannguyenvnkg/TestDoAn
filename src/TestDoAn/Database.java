@@ -44,7 +44,8 @@ public class Database {
      */
     
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-       
+       hamtestchucnang h = new hamtestchucnang();
+       h.run();
     }
 
     

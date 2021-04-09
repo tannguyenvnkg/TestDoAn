@@ -7,6 +7,7 @@
 //</editor-fold>
 package TestDoAn;
 
+import java.awt.TextField;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -154,15 +155,22 @@ public class FormChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_DangXuatActionPerformed
 
     private void QuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuanLyActionPerformed
-        ChucNang cn = new ChucNang();
-        if(!NhanVien.getInstance().getIdchucvu().equals("1")){
-            JOptionPane.showMessageDialog(null, "Bạn không có quyền truy cập");
-        }
-        else {
-            NhanSu ns = new NhanSu();
-            ns.setVisible(true); // show form
-            ns.model(); //lấy jtable
-            cn.shownhanvien(ns.model);  // show nhân viên vào jtable
+        try {
+            ChucNang cn = new ChucNang();
+            if(!NhanVien.getInstance().getIdchucvu().equals("1")){
+                JOptionPane.showMessageDialog(null, "Bạn không có quyền truy cập");
+            }
+            else {
+                NhanSu ns = new NhanSu();
+                ns.setVisible(true); // show form
+                ns.model(); //lấy jtable
+                ns.comboBoxModel(); // lấy combobox
+                cn.shownhanvien(ns.model);  // show nhân viên vào jtable
+                cn.showcombobox(ns.comboBoxModel);
+                ns.disable();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FormChinh.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_QuanLyActionPerformed
 
